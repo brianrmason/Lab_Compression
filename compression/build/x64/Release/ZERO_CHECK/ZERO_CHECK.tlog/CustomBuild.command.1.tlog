@@ -1,0 +1,10 @@
+^C:\USERS\PUBLIC\DOCUMENTS\C++\COMPRESSION\BUILD\CMAKEFILES\A2326E84F467577D6B424A5B8AFABDB6\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Public/Documents/C++/compression -BC:/Users/Public/Documents/C++/compression/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/Public/Documents/C++/compression/build/labcompress.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

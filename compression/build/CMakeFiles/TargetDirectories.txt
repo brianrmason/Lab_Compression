@@ -1,0 +1,5 @@
+C:/Users/Public/Documents/C++/compression/build/CMakeFiles/labcompress.dir
+C:/Users/Public/Documents/C++/compression/build/CMakeFiles/labcompress_lib.dir
+C:/Users/Public/Documents/C++/compression/build/CMakeFiles/INSTALL.dir
+C:/Users/Public/Documents/C++/compression/build/CMakeFiles/ALL_BUILD.dir
+C:/Users/Public/Documents/C++/compression/build/CMakeFiles/ZERO_CHECK.dir
