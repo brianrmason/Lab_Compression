@@ -1,0 +1,17 @@
+# Build directories
+build/
+build_v2/
+build_ninja/
+
+# Binary output
+*.bin
+
+# Data files
+*.csv
+
+# IDE
+.vscode/
+
+# OS
+Thumbs.db
+Desktop.ini
