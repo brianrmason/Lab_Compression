@@ -106,3 +106,19 @@ Typical compression on experiment history data (~10,600 records, 42 columns):
 - Input: ~5.3 MB (CSV)
 - Output: ~2.7 MB (binary)
 - Compression ratio: ~50%
+
+## Sample: 
+
+  analyze — reads the CSV, samples 1000 rows, infers all 42 column types, and reports what it found: 26 categorical columns
+  (dictionary encoding), 3 timestamps, 8 constant columns (like Site which is always 1). Dry run, no output file.
+
+  compress — builds 21 dictionaries (skips 5 columns that exceed 500 unique values), then encodes all 10,641 rows. 5.3 MB
+  CSV down to 2.7 MB binary. You can see the dictionary sizes — SiteName has 4 entries, User has 217, InstrumentSerialNumber
+   has 115.
+
+  query instrument "" 2025 — loads the binary, decodes 10,635 valid records, and shows every instrument's 2025 utilization
+  sorted by usage. Top instrument B217887537 ran 72 experiments totaling 3,636 hours = 41.5% of the year. Bottom instruments
+   barely ran at all.
+
+  query underutilized 5 2025 — same data, filtered to instruments under 5% utilization. 36 instruments qualify, including
+  B431873089 which ran 92 experiments but only accumulated 240 hours (2.7%) — lots of short runs.
