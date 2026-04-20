@@ -120,5 +120,27 @@ Typical compression on experiment history data (~10,600 records, 42 columns):
   sorted by usage. Top instrument B217887537 ran 72 experiments totaling 3,636 hours = 41.5% of the year. Bottom instruments
    barely ran at all.
 
+## How to run
+
+  cmake -S . -B build_v2 -G "Visual Studio 17 2022"
+  cmake --build build_v2 --config Release
+
+  Or just run build.bat.
+
+  Then the three commands:
+
+  # 1. Analyze a CSV (dry run — shows column types, suggests strategies)
+  ./build_v2/Release/labcompress.exe analyze ExperimentHistory.csv
+
+  # 2. Compress CSV to binary
+  ./build_v2/Release/labcompress.exe compress ExperimentHistory.csv utilization_v2.bin
+
+  # 3. Query the binary
+  ./build_v2/Release/labcompress.exe query utilization_v2.bin instrument                  # all instruments, all years
+  ./build_v2/Release/labcompress.exe query utilization_v2.bin instrument "" 2025           # all instruments, 2025 only
+  ./build_v2/Release/labcompress.exe query utilization_v2.bin instrument "B217" 2025       # filter by name substring
+  ./build_v2/Release/labcompress.exe query utilization_v2.bin underutilized 10 2025        # instruments under 10% in
+  2025
+
   query underutilized 5 2025 — same data, filtered to instruments under 5% utilization. 36 instruments qualify, including
   B431873089 which ran 92 experiments but only accumulated 240 hours (2.7%) — lots of short runs.
